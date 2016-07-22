@@ -1,4 +1,8 @@
 #pragma once
+#include <stdint.h>
+#include <boost/shared_ptr.hpp>
+#include <vector>
+#include <map>
 
 struct ID {
 	union UID {
@@ -31,9 +35,10 @@ class Transformation {
 	} tf_;
 };
 
-template<class T_STATE_ID=ID, class T_FEATURE_ID=ID, class T_TRANSFORMATION=Transformation, class T_SCALAR=double>
+template<class T_STATE_ID=ID, class T_FEATURE_ID=ID, class T_TRANSFORMATION=Transformation<>, class T_SCALAR=double>
 class State {
 	typedef T_SCALAR Scalar;
+	typedef T_STATE_ID ID;
 	typedef boost::shared_ptr<State> Ptr;
 	
 	struct S_AssociatedFeature {
@@ -56,10 +61,10 @@ public:
 	}
 };
 
-template<class T_STATE=State, class T_TRANSFORMATION=Transformation>
+template<class T_STATE=State<>, class T_TRANSFORMATION=Transformation<> >
 class Head {
 	T_TRANSFORMATION offset_;
-	State::Ptr last_active_state_;
+	typename T_STATE::Ptr last_active_state_;
 };
 
 template<class T_FEATURE_ID=ID, class T_FEATURE_DATA=void, class T_SCALAR=double>
@@ -71,12 +76,12 @@ class InputHistorySlot {
 	
 	std::vector<S_Content> slots_;
 	
-	virtual () = 0;
+	//virtual () = 0;
 	
 	inline size_t size() const {return slots_.size();}
 	
-	template<class T_HYPOTHESIS>
-	virtual T_SCALAR distinctiveness(const T_HYPOTHESIS &hyp) = 0;
+	//template<class T_HYPOTHESIS>
+	//virtual T_SCALAR distinctiveness(const T_HYPOTHESIS &hyp) = 0;
 	virtual bool create_new_slot() const {return false;}
 };
 
@@ -87,3 +92,6 @@ class InputHistorySlot {
  *  - on_new_input(FT_ID, DATA)
  *  - insert_slot()
  */
+
+
+#include "dfs.hpp"

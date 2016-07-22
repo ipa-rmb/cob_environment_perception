@@ -1,4 +1,4 @@
-serial_device: /dev/ttyACM0
+serial_device: /dev/ttyACM3
 serial_baudrate: 57600
 joint_names: ['servo_pan', 'servo_tilt']
 #fixed_velocities: [1.02, 1.02]

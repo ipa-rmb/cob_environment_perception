@@ -24,7 +24,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(OpenCV REQUIRED)
 find_package(VTK REQUIRED COMPONENTS vtkCommon vtkFiltering vtkRendering)
-find_package(Boost REQUIRED COMPONENTS program_options)
+#find_package(Boost REQUIRED COMPONENTS program_options)
 #find_package(PCL REQUIRED)
 
 find_package(OpenMP)
@@ -55,7 +55,7 @@ catkin_package(
   DEPENDS
     OpenCV
     VTK
-    Boost
+#    Boost
 #    PCL
 )
 
@@ -71,7 +71,7 @@ catkin_package(
 include_directories(
   common/include
   ${catkin_INCLUDE_DIRS}
-  ${Boost_INCLUDE_DIRS}
+#  ${Boost_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
 #  ${PCL_INCLUDE_DIRS}
   ${VTK_INCLUDE_DIRS}
@@ -122,7 +122,7 @@ target_link_libraries(test_organized_curvature_estimation
   ${catkin_LIBRARIES}
   ${VTK_LIBRARIES}
   ${OpenCV_LIBRARIES}
-  ${Boost_LIBRARIES}
+#  ${Boost_LIBRARIES}
 )
 add_dependencies(test_organized_curvature_estimation ${catkin_EXPORTED_TARGETS})
 
@@ -134,7 +134,7 @@ target_link_libraries(test_surface_class_estimation
   ${catkin_LIBRARIES}
   ${VTK_LIBRARIES}
   ${OpenCV_LIBRARIES}
-  ${Boost_LIBRARIES}
+#  ${Boost_LIBRARIES}
 )
 add_dependencies(test_surface_class_estimation ${catkin_EXPORTED_TARGETS})
 
@@ -146,7 +146,7 @@ target_link_libraries(test_edge_sharpening
   ${catkin_LIBRARIES}
   ${VTK_LIBRARIES}
   ${OpenCV_LIBRARIES}
-  ${Boost_LIBRARIES}
+#  ${Boost_LIBRARIES}
 )
 add_dependencies(test_edge_sharpening ${catkin_EXPORTED_TARGETS})
 
@@ -213,7 +213,7 @@ add_executable(extract_organized_curvatures common/test/extract_organized_curvat
 target_link_libraries(extract_organized_curvatures
   cob_3d_features
   ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
+#  ${Boost_LIBRARIES}
 )
 add_dependencies(extract_organized_curvatures ${catkin_EXPORTED_TARGETS})
 

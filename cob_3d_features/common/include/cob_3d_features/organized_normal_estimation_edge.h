@@ -63,9 +63,9 @@
 #ifndef __ORGANIZED_NORMAL_ESTIMATION_EDGE_H__
 #define __ORGANIZED_NORMAL_ESTIMATION_EDGE_H__
 
+#include "opencv/cv.h"
 #include "cob_3d_features/organized_features.h"
 #include "cob_3d_features/organized_normal_estimation.h"
-#include "opencv/cv.h"
 
 namespace cob_3d_features
 {

@@ -584,7 +584,7 @@
       this->polygons_[i].img_->is_bigendian = false;
       this->polygons_[i].img_->data.resize( this->polygons_[i].img_->step*this->polygons_[i].img_->height );
 
-      this->polygons_[i].color_[0] = this->polygons_[i].color_[1] = this->polygons_[i].color_[2] = 0.f;
+      /*this->polygons_[i].color_[0] = this->polygons_[i].color_[1] = this->polygons_[i].color_[2] = 0.f;
       for(int x=mix; x<=max; x++) {
         for(int y=miy; y<=may; y++) {
           this->polygons_[i].img_->data[(y-miy)*this->polygons_[i].img_->step + 3*(x-mix) + 0] = pc(x,y).r;
@@ -599,7 +599,7 @@
 
       this->polygons_[i].color_[0] /= 255.f*this->polygons_[i].img_->width*this->polygons_[i].img_->height;
       this->polygons_[i].color_[1] /= 255.f*this->polygons_[i].img_->width*this->polygons_[i].img_->height;
-      this->polygons_[i].color_[2] /= 255.f*this->polygons_[i].img_->width*this->polygons_[i].img_->height;
+      this->polygons_[i].color_[2] /= 255.f*this->polygons_[i].img_->width*this->polygons_[i].img_->height;*/
     }
   return true;
 #else
