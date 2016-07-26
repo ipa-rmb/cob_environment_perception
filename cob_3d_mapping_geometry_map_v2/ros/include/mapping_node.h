@@ -98,6 +98,9 @@ class GeometryNode : public cob_3d_geometry_map::TransformationEstimator {
 		  publish_scan(scene->header);
 		  publish_cartons(scene->header);
 	  }
+	  catch(boost::exception & e ) {
+		  std::cerr << diagnostic_information(e);
+	  }
 	  catch(...) {
 		  ROS_ERROR("some error in geometry_map_v2, resetting...");
 		  reset();
