@@ -391,6 +391,7 @@ void Context2D::insert(Object::Ptr _obj)
 		
 		for(size_t i=0; i<result_n.size(); i++) {
 			CAST_TO(Plane, result_n[i].second->obj_, matched_plane);
+			try {
 				if(!boost::geometry::overlaps(*result_n[i].second->poly_,*polys[j])) continue;
 			
 				//split into 3 parts
@@ -508,6 +509,9 @@ void Context2D::insert(Object::Ptr _obj)
 						insert(result_n[i].second->obj_, p_union);
 				}
 				
+			} catch(...) {
+				std::cerr<<"error while inserting new plane"<<std::endl;
+			}
 			CAST_TO_END;
 			
 			rtree_.remove(result_n[i]);
