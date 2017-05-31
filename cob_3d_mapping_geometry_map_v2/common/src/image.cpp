@@ -12,6 +12,11 @@ ImageFile::ImageFile(const ContextPtr &ctxt, const TImgType &type) :
  Image(ctxt, type), filename_(boost::filesystem::unique_path().native())
 {}
 
+ImageFile::~ImageFile()
+{
+	std::remove(filename().c_str());
+}
+
 ImageFile::Ptr ImageFile::get(const ContextPtr &ctxt, const sensor_msgs::ImageConstPtr &msg, const TImgType &type)
 {
   ImageFile::Ptr img;

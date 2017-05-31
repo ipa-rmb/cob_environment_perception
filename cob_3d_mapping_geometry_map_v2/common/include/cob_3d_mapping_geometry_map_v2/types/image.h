@@ -8,7 +8,7 @@
 //! interfaces of cob_3d_geometry_map (v2)
 namespace cob_3d_geometry_map {
 	
-class Image : public Object {
+class Image : public Object3D {
 public:
 	typedef boost::shared_ptr<Image> Ptr;
 	
@@ -21,8 +21,10 @@ private:
 
 public:
 
-	Image(const ContextPtr &ctxt) : Object(ctxt), width_(0), height_(0), type_(TYPE_NONE), resolution_(0) {}
-	Image(const ContextPtr &ctxt, const TImgType &type) : Object(ctxt), width_(0), height_(0), type_(type), resolution_(0) {}
+	Image(const ContextPtr &ctxt) : Object3D(ctxt), width_(0), height_(0), type_(TYPE_NONE), resolution_(0) {}
+	Image(const ContextPtr &ctxt, const TImgType &type) : Object3D(ctxt), width_(0), height_(0), type_(type), resolution_(0) {}
+	
+	virtual ~Image() {}
 
 	//getters
 	inline int width() const {return width_;}
@@ -43,6 +45,8 @@ public:
 
 	ImageFile(const ContextPtr &ctxt);
 	ImageFile(const ContextPtr &ctxt, const TImgType &type);
+	
+	virtual ~ImageFile();
 
 	const std::string &filename() const {return filename_;}
 	

@@ -78,6 +78,8 @@ public:
 	{
 	}
 	
+	virtual ~Object() {}
+	
 	inline TID id() const {return id_;}
 	
 	virtual std::string type() {return "Object";}
@@ -106,6 +108,8 @@ public:
 	
 	Object3D(const ContextPtr &ctxt) : Object(ctxt)
 	{}
+	
+	virtual ~Object3D() {}
 
 	//<getter for pose
 	const nuklei::kernel::se3 &pose() const {return pose_;}

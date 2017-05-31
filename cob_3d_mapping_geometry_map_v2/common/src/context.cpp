@@ -39,6 +39,10 @@ void GlobalContext::add_scene(const cob_3d_mapping_msgs::PlaneScene &scene, Tran
 			return;
 		}
 		
+	//set relation between scene and captures images
+	for(size_t i=0; i<imgs.size(); i++)
+		imgs[i]->pose() = tf;
+		
 	scene_2d_.reset(new Context2D(scene_, proj_.cast<float>(), tf));
 	scene_->set_context_2d(scene_2d_.get());
 	scene_2d_->merge(ctxt, merge_enabled_);
@@ -93,15 +97,15 @@ void GlobalContext::visualize_markers() {
 void Context::add_scene(const Context::Ptr &this_ctxt, const cob_3d_mapping_msgs::PlaneScene &scene, const std::vector<Image::Ptr> &imgs)
 {
 	//TODO: add image first
+	for(size_t i=0; i<imgs.size(); i++)
+		add(imgs[i]);
 	
 	for(size_t i=0; i<scene.planes.size(); i++) {
 		Plane *plane = new Plane(this_ctxt, scene.planes[i]);
 		if(!plane->simplify_by_area(0.01*0.01))
 			delete plane;
-		else {
-			plane->addImgs(imgs);
+		else 
 			add(Object::Ptr( plane ));
-		}
 	}
 	
 	build();
@@ -387,6 +391,7 @@ void Context2D::insert(Object::Ptr _obj)
 		
 		for(size_t i=0; i<result_n.size(); i++) {
 			CAST_TO(Plane, result_n[i].second->obj_, matched_plane);
+			try {
 				if(!boost::geometry::overlaps(*result_n[i].second->poly_,*polys[j])) continue;
 			
 				//split into 3 parts
@@ -504,6 +509,9 @@ void Context2D::insert(Object::Ptr _obj)
 						insert(result_n[i].second->obj_, p_union);
 				}
 				
+			} catch(...) {
+				std::cerr<<"error while inserting new plane"<<std::endl;
+			}
 			CAST_TO_END;
 			
 			rtree_.remove(result_n[i]);
