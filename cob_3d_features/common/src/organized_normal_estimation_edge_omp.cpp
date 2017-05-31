@@ -61,12 +61,12 @@
  ****************************************************************/
 
 // external includes:
-#include "cob_3d_features/organized_normal_estimation_edge_omp.h"
 #include <pcl/point_types.h>
 #include <pcl/impl/instantiate.hpp>
 
 // package includes:
 #include "cob_3d_mapping_common/point_types.h"
+#include "cob_3d_features/organized_normal_estimation_edge_omp.h"
 #include "cob_3d_features/impl/organized_normal_estimation_edge_omp.hpp"
 
 PCL_INSTANTIATE_OrganizedNormalEstimationEdgeOMP(pcl::PointXYZRGB,pcl::Normal,PointLabel)

@@ -1,8 +1,5 @@
 #pragma once
 
-#include "dfs.hpp"
-
-
 /*
  * hyptotheses tree:
  *  in ideal case try each combination
@@ -42,10 +39,6 @@ public:
 private:
 	Head<> head_;
 	History hist_;
-	
-	typedef T_SCALAR double;
-	typedef DFS::Graph<typename T_STATE::Ptr, Head<>, T_SCALAR, InputHistorySlot> T_INTERNAL_HYPOTHESIS;
-	std::vector<T_INTERNAL_HYPOTHESIS> hypos_;
 	
 	size_t history_size() const {return hist_.front().size();}
 	

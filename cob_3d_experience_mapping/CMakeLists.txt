@@ -15,7 +15,7 @@ set(catkin_BUILD_PACKAGES
 	cmake_modules
 )
 
-find_package(cmake_modules REQUIRED)
+find_package(Eigen REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -79,10 +79,10 @@ find_package(cmake_modules REQUIRED)
 
 #add dynamic reconfigure api
 #find_package(catkin REQUIRED dynamic_reconfigure)
-#generate_dynamic_reconfigure_options(
-#  cfg/settings.cfg
-#  cfg/visualization.cfg
-#)
+generate_dynamic_reconfigure_options(
+  cfg/settings.cfg
+  cfg/visualization.cfg
+)
 
 ###################################
 ## catkin specific configuration ##
